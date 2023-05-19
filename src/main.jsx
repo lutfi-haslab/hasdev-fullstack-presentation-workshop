@@ -1,7 +1,6 @@
 import { Outlet, ReactLocation, Router } from "@tanstack/react-location";
 import React from "react";
 import ReactDOM from "react-dom/client";
-import App from "./App.jsx";
 import "./index.css";
 import About from "./pages/About";
 import Home from "./pages/Home";
