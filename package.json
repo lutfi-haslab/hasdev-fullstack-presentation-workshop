@@ -3,6 +3,7 @@
   "private": true,
   "author": "lutfi ikbal majid",
   "version": "0.0.0",
+  "homepage": ".",
   "type": "module",
   "scripts": {
     "dev": "vite",

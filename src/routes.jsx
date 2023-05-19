@@ -8,7 +8,7 @@ const routes = [
     element: <Home />,
   },
   {
-    path: "/about",
+    path: "about",
     element: <About />,
   },
 ];
