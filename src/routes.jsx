@@ -5,11 +5,15 @@ import About from "./pages/About";
 const routes = [
   {
     path: "/",
-    element: <Home />,
+    element: <About />,
   },
   {
     path: "about",
     element: <About />,
+  },
+  {
+    path: "/slide/home",
+    element: <Home />,
   },
 ];
 
