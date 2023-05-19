@@ -1,43 +1,61 @@
-import React from "react";
-import {
-  FlexBox,
-  Heading,
-  SpectacleLogo,
-  UnorderedList,
-  CodeSpan,
-  OrderedList,
-  ListItem,
-  Appear,
-  Slide,
-  Deck,
-  Text,
-  Grid,
-  Box,
-  Image,
-  CodePane,
-  MarkdownSlide,
-  MarkdownSlideSet,
-  Notes,
-  DefaultTemplate,
-  SlideLayout,
-} from "spectacle";
 import { Sandpack } from "@codesandbox/sandpack-react";
+import { Link } from "react-router-dom";
+import React from "react";
+import
+{
+  Box,
+  CodePane,
+  Deck,
+  FlexBox,
+  FullScreen,
+  MarkdownSlide,
+  Notes,
+  Progress,
+  Slide,
+  SpectacleLogo
+} from "spectacle";
+import Logo from '../assets/logo-hasdev-white.png'
 
 const theme = {
   fonts: {
     header: '"Open Sans Condensed", Helvetica, Arial, sans-serif',
     text: '"Open Sans Condensed", Helvetica, Arial, sans-serif',
   },
+  zIndices: 100,
+  sizes: {
+    width: "100%"
+  }
 };
-const template = <DefaultTemplate />;
+// const template = <DefaultTemplate />;
+const Template = ({ slideNumber, numberOfSlides }) => (
+  <>
+    <div className="flex justify-between m-4 text-lg text-gray-300">
+      <div className="flex space-x-2 items-center">
+        <FullScreen />
+        <p>@Lutzfy21 // Mini workshop fullstack developer</p>
+      </div>
+      <div className="flex space-x-2 items-center">
 
-const Home = () => {
+        <p>{new Date().toDateString()}</p>
+      </div>
+    </div>
+    <div className="fixed w-[90vw] bottom-0 flex justify-between m-4 mr-16 ">
+      <Progress />
+    </div>
+  </>
+);
+
+const Home = () =>
+{
   return (
-    <Deck theme={theme} template={template}>
-      <Slide>
+    <Deck theme={theme} template={({ slideNumber, numberOfSlides }) => <Template slideNumber={slideNumber} numberOfSlides={numberOfSlides} />}>
+      <Slide className="p-10">
         <FlexBox height="100%">
-          <SpectacleLogo size={500} />
+          <img src={Logo} />
         </FlexBox>
+        <a target="_blank" href='/?exportMode=true&printMode=true' className="cursor-pointer absolute z-[1000]">
+          Download
+        </a>
         <Notes>
           Spectacle supports notes per slide.
           <ol>
@@ -46,38 +64,9 @@ const Home = () => {
           </ol>
         </Notes>
       </Slide>
-      <MarkdownSlide componentProps={{ color: "yellow" }}>
-        {`
-        # This is a Markdown Slide
-
-        - You can pass props down to all elements on the slide.
-        - Just use the \`componentProps\` prop.
-        `}
-      </MarkdownSlide>
-      <Slide>
-        <CodePane language="jsx">{`
-        import { createClient, Provider } from 'urql';
-
-        const client = createClient({ url: 'https://0ufyz.sse.codesandbox.io' });
-
-        const App = () => (
-          <Provider value={client}>
-            <Todos />
-          </Provider>
-        );
-        `}</CodePane>
-        <Box height={20} />
-        <CodePane language="java" showLineNumbers={false}>{`
-        public class NoLineNumbers {
-          public static void main(String[] args) {
-            System.out.println("Hello");
-          }
-        }
-        `}</CodePane>
-      </Slide>
-      <Slide>
-        <h1>React Playground</h1>
-        <Sandpack template="react" />
+      <Slide className="p-10">
+        <h1>Go to:</h1>
+        <Link to="/intro-html"><p className="font-bold text-blue-600 underline text-4xl hover:text-red-600">Intro HTML</p></Link>
       </Slide>
     </Deck>
   );

@@ -4,6 +4,7 @@ import ReactDOM from "react-dom/client";
 import "./index.css";
 import About from "./pages/About";
 import Home from "./pages/Home";
+import IntroHtml from "./pages/IntroHtml";
 
 const router = createBrowserRouter([
   {
@@ -13,6 +14,10 @@ const router = createBrowserRouter([
   {
     path: "/about",
     element: <About />,
+  },
+  {
+    path: "/intro-html",
+    element: <IntroHtml />,
   },
 ]);
 
