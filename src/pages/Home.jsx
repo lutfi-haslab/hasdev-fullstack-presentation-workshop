@@ -53,9 +53,6 @@ const Home = () =>
         <FlexBox height="100%">
           <img src={Logo} />
         </FlexBox>
-        <a target="_blank" href='/?exportMode=true&printMode=true' className="cursor-pointer absolute z-[1000]">
-          Download
-        </a>
         <Notes>
           Spectacle supports notes per slide.
           <ol>
@@ -67,6 +64,10 @@ const Home = () =>
       <Slide className="p-10">
         <h1>Go to:</h1>
         <Link to="/intro-html"><p className="font-bold text-blue-600 underline text-4xl hover:text-red-600">Intro HTML</p></Link>
+        <Link to="/intro-css"><p className="font-bold text-blue-600 underline text-4xl hover:text-red-600">Intro CSS</p></Link>
+        <Link to="/intro-javascript"><p className="font-bold text-blue-600 underline text-4xl hover:text-red-600">Intro Javascript</p></Link>
+        <Link to="/intro-jsframework"><p className="font-bold text-blue-600 underline text-4xl hover:text-red-600">Intro JSFramework</p></Link>
+        <Link to="/intro-jsserver"><p className="font-bold text-blue-600 underline text-4xl hover:text-red-600">Intro JSServer</p></Link>
       </Slide>
     </Deck>
   );

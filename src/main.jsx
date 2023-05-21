@@ -5,6 +5,10 @@ import "./index.css";
 import About from "./pages/About";
 import Home from "./pages/Home";
 import IntroHtml from "./pages/IntroHtml";
+import IntroCss from "./pages/IntroCss";
+import IntroJS from "./pages/IntroJS";
+import IntroJSFramework from "./pages/IntroJSFramework";
+import IntroJSServer from "./pages/IntroJSServer";
 
 const router = createBrowserRouter([
   {
@@ -18,6 +22,18 @@ const router = createBrowserRouter([
   {
     path: "/intro-html",
     element: <IntroHtml />,
+  },
+  {
+    path: "/intro-javascript",
+    element: <IntroJS />,
+  },
+  {
+    path: "/intro-jsframework",
+    element: <IntroJSFramework />,
+  },
+  {
+    path: "/intro-jsserver",
+    element: <IntroJSServer />,
   },
 ]);
 

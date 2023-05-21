@@ -1,18 +1,19 @@
 import { Sandpack } from "@codesandbox/sandpack-react";
 import React from "react";
+import { Link } from "react-router-dom";
 import
-  {
-    CodePane,
-    Deck,
-    FlexBox,
-    FullScreen,
-    MarkdownSlide,
-    Notes,
-    Progress,
-    Slide,
-    SlideLayout
-  } from "spectacle";
-import Logo from '../assets/logo-hasdev-white.png';
+{
+  CodePane,
+  Deck,
+  FlexBox,
+  FullScreen,
+  MarkdownSlide,
+  Notes,
+  Progress,
+  Slide,
+  SlideLayout,
+} from "spectacle";
+import Logo from "../assets/logo-hasdev-white.png";
 
 const theme = {
   fonts: {
@@ -21,8 +22,8 @@ const theme = {
   },
   zIndices: 100,
   sizes: {
-    width: "100%"
-  }
+    width: "100%",
+  },
 };
 // const template = <DefaultTemplate />;
 const Template = ({ slideNumber, numberOfSlides }) => (
@@ -33,7 +34,6 @@ const Template = ({ slideNumber, numberOfSlides }) => (
         <p>@Lutzfy21 // Mini workshop fullstack developer</p>
       </div>
       <div className="flex space-x-2 items-center">
-
         <p>{new Date().toDateString()}</p>
       </div>
     </div>
@@ -46,7 +46,12 @@ const Template = ({ slideNumber, numberOfSlides }) => (
 const IntroHtml = () =>
 {
   return (
-    <Deck theme={theme} template={({ slideNumber, numberOfSlides }) => <Template slideNumber={slideNumber} numberOfSlides={numberOfSlides} />}>
+    <Deck
+      theme={theme}
+      template={({ slideNumber, numberOfSlides }) => (
+        <Template slideNumber={slideNumber} numberOfSlides={numberOfSlides} />
+      )}
+    >
       {/* 1 */}
       <Slide className="p-10">
         <FlexBox height="100%">
@@ -55,7 +60,11 @@ const IntroHtml = () =>
               <img src={Logo} />
             </div>
             <div>
-              <a target="_blank" href='/intro-html?exportMode=true&printMode=true' className="cursor-pointer text-blue-200 underline text-xl">
+              <a
+                target="_blank"
+                href="/intro-html?exportMode=true&printMode=true"
+                className="cursor-pointer text-blue-200 underline text-xl"
+              >
                 Download
               </a>
             </div>
@@ -107,8 +116,9 @@ const IntroHtml = () =>
       {/* 6 */}
       <Slide className="p-10">
         <h1>HTML is very, very forgiving</h1>
-        <Sandpack files={{
-          '/index.html': `<p>If you add <strong>Strong</oops> text and <em>emphasised</doh> text but forget to close your tags, that doesn't cause the worst problems.</ohno>
+        <Sandpack
+          files={{
+            "/index.html": `<p>If you add <strong>Strong</oops> text and <em>emphasised</doh> text but forget to close your tags, that doesn't cause the worst problems.</ohno>
 <p>All that happens is your text continue to be bold and emphasized.</ohno>
 
 <p>But not closing a "style" or "script" is a more serious issue. 
@@ -125,9 +135,10 @@ const IntroHtml = () =>
     <tr>
       <th>Optional closing
     <tr>
-      <td>table cell`
-        }}
-          template="static" />
+      <td>table cell`,
+          }}
+          template="static"
+        />
       </Slide>
       {/* 7 */}
       <Slide className="p-10">
@@ -137,7 +148,6 @@ const IntroHtml = () =>
         <CodePane language="html">{`
         <p>This is a paragraph of text.</p>
         `}</CodePane>
-
       </Slide>
       {/* 8 */}
       <Slide className="p-10">
@@ -192,8 +202,13 @@ const IntroHtml = () =>
 ![viewport](https://web-dev.imgix.net/image/kheDArv5csY6rvQUJDbWRscckLr1/HahSW2IXIkGux7cMCMpE.png?auto=format&w=964)`}
       </MarkdownSlide>
       {/* 14 */}
-      <SlideLayout.MultiCodeLayout numColumns={2} title="Semantic HTML" className="p-10" codeBlocks={[ {
-        code: `
+      <SlideLayout.MultiCodeLayout
+        numColumns={2}
+        title="Semantic HTML"
+        className="p-10"
+        codeBlocks={[
+          {
+            code: `
       <div>
       <span>Three words</span>
       <div>
@@ -220,9 +235,12 @@ const IntroHtml = () =>
     </div>
     <div>
        <span>five words</span>
-    </div>`, language: 'html', description: 'without semantic'
-      }, {
-        code: `
+    </div>`,
+            language: "html",
+            description: "without semantic",
+          },
+          {
+            code: `
     <header>
   <h1>Three words</h1>
   <nav>
@@ -249,13 +267,22 @@ const IntroHtml = () =>
 </main>
 <footer>
   <p>five words</p>
-</footer>`, language: 'html', description: 'with semantic'
-      } ]} />
+</footer>`,
+            language: "html",
+            description: "with semantic",
+          },
+        ]}
+      />
       {/* 15 */}
+      <MarkdownSlide componentProps={{ color: "white" }} className="p-10">
+        {`# Semantic means "relating to meaning".`}
+      </MarkdownSlide>
+      {/* 16 */}
       <Slide className="p-10">
         <h1>Headings & Sections</h1>
-        <Sandpack files={{
-          '/styles.css': `header { background-color: aqua;}
+        <Sandpack
+          files={{
+            "/styles.css": `header { background-color: aqua;}
 nav { background-color: aquamarine;}
 main { background-color: brown;}
 aside { background-color: cornflowerblue;}
@@ -264,7 +291,7 @@ h1 { color: red;}
 body { color: white;}
 .wrapper {  display: grid;grid-template-columns: 1fr 3fr 1fr;}
 `,
-          '/index.html': `<!DOCTYPE html>
+            "/index.html": `<!DOCTYPE html>
 <html>
   <head>
     <title>Parcel Sandbox</title>
@@ -291,27 +318,28 @@ body { color: white;}
     <footer>Footer</footer>
   </body>
 </html>
-`
-        }}
+`,
+          }}
           template="static"
           options={{
             wrapContent: true, // default - false
             editorHeight: 500, // default - 300
-            editorWidthPercentage: 60, // default - 50 
-          }} />
-
+            editorWidthPercentage: 60, // default - 50
+          }}
+        />
       </Slide>
-      {/* 16 */}
+      {/* 17 */}
       <Slide className="p-10">
         <h1>Text Basics</h1>
-        <Sandpack files={{
-          '/styles.css': `h1 { color: red;font-size: 2rem;}
+        <Sandpack
+          files={{
+            "/styles.css": `h1 { color: red;font-size: 2rem;}
 h2 { color: red;font-size: 1.8rem;}
 h3 { color: red;font-size: 1.6rem;}
 h4 { color: red;font-size: 1.4rem;}
 h5 { color: red;font-size: 1.2rem;}
 p { color: red;font-size: 1rem;}`,
-          '/index.html': `<!DOCTYPE html>
+            "/index.html": `<!DOCTYPE html>
 <html>
   <head>
     <title>Parcel Sandbox</title>
@@ -333,18 +361,273 @@ p { color: red;font-size: 1rem;}`,
     <p>entities: &#x1F600; &lt; &gt; &amp; </p>
   </body>
 </html>
-`
-        }}
+`,
+          }}
           template="static"
           options={{
             wrapContent: true, // default - false
             editorHeight: 500, // default - 300
-            editorWidthPercentage: 60, // default - 50 
-          }} />
+            editorWidthPercentage: 60, // default - 50
+          }}
+        />
+      </Slide>
+      {/* 18 */}
+      <Slide className="p-10">
+        <h1>Link</h1>
+        <img src="https://web-dev.imgix.net/image/cGQxYFGJrUUaUZyWhyt9yo5gHhs1/17yQeLEUX6s88IbDJreQ.png?auto=format&w=964" />
+      </Slide>
+      {/* 19 */}
+      <Slide className="p-10">
+        <h1>Links represent a connection between two resources</h1>
+        <CodePane language="html">{`
+        // Links can be created by <a>, <area>, <form>, and <link>
+        // href
+        <a href="https://machinelearningworkshop.com">Machine Learning Workshop</a>
+        <a href="#teachers">Our teachers</a>
+        <a href="#top">Go to top.</a>
+        <a href="https://machinelearningworkshop.com#teachers">MLW teachers</a>
+        <a href="mailto:hal9000@machinelearningworkshop.com">Email Hal</a>
+        <a href="tel:8005551212">Call Hal</a>
+        <a href="blob:https://jakearchibald.github.io/944a5fc8-fdb3-458a-91ee-cdd5964b6646" download="hal.svg">
+        // area
+        <area shape="poly" coords="129,0,260,95,129,138"
+        href="https://developer.mozilla.org/docs/Web/HTTP"
+        target="_blank" alt="HTTP">
+        // link
+        <link href="main.css" rel="stylesheet" /> //The rel stands for "relationship"
+        <link rel="icon" href="favicon.ico" />
 
+        `}</CodePane>
+      </Slide>
+      {/* 20 */}
+      <Slide className="p-10">
+        <a
+          href="https://web.dev/learn/html/links/"
+          target="_blank"
+          className="hover:text-blue-600 underline"
+        >
+          <h1>Hi, I am a link</h1>
+        </a>
+        <a href="https://upload.wikimedia.org/wikipedia/id/9/94/NarutoCoverTankobon1.jpg" download>
+          <img src="https://upload.wikimedia.org/wikipedia/id/9/94/NarutoCoverTankobon1.jpg" width="200px" />
+          <h2 className="hover:text-blue-600 underline">Download Me!</h2>
+        </a>
+      </Slide>
+      {/* 21 */}
+      <Slide className="p-10">
+        <h1>Lists</h1>
+        <Sandpack files={{
+          'index.html':
+            `<h1>Unordered List</h1>
+<ul>
+  <li>Blender</li>
+  <li>Toaster</li>
+  <li>Vacuum</li>
+</ul>
+<br />
+<h1>Unordered List</h1>
+<ol>
+  <li>Blender</li>
+  <li>Toaster</li>
+  <li>Vacuum</li>
+</ol>
+<ol type="A">
+  <li>Blender</li>
+  <li>Toaster</li>
+  <li>Vacuum</li>
+</ol>
+<ol type="a">
+  <li>Blender</li>
+  <li>Toaster</li>
+  <li>Vacuum</li>
+</ol>
+          `
+        }} template="static" options={{ editorHeight: 500 }} />
+      </Slide>
+      {/* 22 */}
+      <Slide className="p-10">
+        <h1>Working with Table</h1>
+        <Sandpack files={{
+          'index.html': `<head>
+  <title>Parcel Sandbox</title>
+  <meta charset="UTF-8" />
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+<h1>Table</h1>
+<table>
+  <caption>MLW Alumni</caption>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Destiny</th>
+      <th>Year</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Hal Gibrah</th>
+      <td>Calculator</td>
+      <td>2020</td>
+    </tr>
+    <tr>
+      <th>Cathy Terr</th>
+      <td>Waste disposal</td>
+      <td>2018</td>
+    </tr>
+    <tr>
+      <th>Lou Minious</th>
+      <td>Lightbulb</td>
+      <td>1956</td>
+    </tr>
+  </tbody>
+</table>
+<h1>Table with merging cells</h1>
+<table>
+  <caption>MLW Alumni</caption>
+  <thead>
+    <tr>
+      <th rowspan="2" id="name" scope="col">Name</th>
+      <th colspan="2" id="path">Career path</th>
+      <th rowspan="2" id="year">Year</th>
+    </tr>
+    <tr>
+      <th id="past" scope="col">Past</th>
+      <th id="future" scope="col">Destiny</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th id="hal" scope="row">Hal Gibrah</th>
+      <td headers="hal path past">Calculator</td>
+      <td headers="hal path future">Mars rover</td>
+      <td>2020</td>
+    </tr>
+    <tr>
+      <th id="cathy" scope="row">Cathy Terr</th>
+      <td headers="cathy path past">Waste disposal</td>
+      <td headers="cathy path future">Automated teller</td>
+      <td>2018</td>
+    </tr>
+    <tr>
+      <th id="lou" scope="row">Lou Minious</th>
+      <td headers="lou path past">Lightbulb</td>
+      <td headers="lou path future">Smart bulb</td>
+      <td>1956</td>
+    </tr>
+  </tbody>
+</table>`,
+          "styles.css": `
+table,
+tr > * {
+  border: 1px solid;
+}
+`
+        }} template="static" options={{ editorHeight: 500 }} />
+      </Slide>
+      {/* 23 */}
+      <Slide className="p-10">
+        <h1>Working with Forms</h1>
+        <Sandpack template="static" files={{
+          'index.html': `<h1>Submiting Forms</h1>
+<input type="submit" value="Submit Form">
+<button type="submit">Submit Form</button>
+<h1>After Submitting Forms</h1>
+<form method="GET">
+  <label for="student">Pick a student:</label>
+  <select name="student" id="student">
+    <option value="hoover">Hoover Sukhdeep</option>
+    <option>Blendan Smooth</option>
+    <option value="toasty">Toasty McToastface</option>
+  </select>
+  <input type="submit" value="Submit Form">
+</form>
+<h1>Radio Button</h1>
+<label>
+<input type="radio" value="blendan" name="machine" /> blenden
+</label>
+<h1>Checkboxes</h1>
+<div>
+  <input type="checkbox" id="scales" name="scales" checked>
+  <label for="scales">Scales</label>
+</div>
+
+<div>
+  <input type="checkbox" id="horns" name="horns">
+  <label for="horns">Horns</label>
+</div>
+          `
+        }} />
+      </Slide>
+      {/* 24 */}
+      <Slide className="p-10">
+        <h1>Images, makes web lot of fun</h1>
+        <CodePane language="html">{`
+        <img src="switch.svg" alt="light switch" role="img" width="70" height="112" />
+        // for svg file, need to add role="img" due to bugs for web features
+        `}</CodePane>
+        <br />
+        <h2>With Image</h2>
+        <img src="https://images.squarespace-cdn.com/content/v1/5e3b1164feb39b444b58f15b/88be65d9-7ef6-4ced-85fd-bc7263ecc68a/naruto-g98192d3f2_1920.png" alt="naruto" width="200px" />
+        <br />
+        <h2>Without Image, only alt</h2>
+        <img src="" alt="Kakashi" />
+      </Slide>
+      {/* 25 */}
+      <Slide className="p-10">
+        <h1>Video on Webs</h1>
+        <Sandpack template="static" files={{
+          'index.html': `<video autoplay loop muted width="400" controls>
+<source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
+<source src="https://www.w3schools.com/html/mov_bbb.ogg" type="video/ogg">
+  Your browser does not support HTML video.
+</video>
+<br/>
+<h1>Even more control</h1>
+<video controls poster="images/machine.jpg">
+  <source src="videos/machines.webm" type="video/webm">
+  <source src="videos/machines.mp4" type="video/mp4">
+  <source src="videos/machines.ogv" type="video/ogg">
+  <track label="English" kind="subtitles" srclang="en" src="vtt/subtitles-en.vtt" default />
+  <track label="Francais" kind="subtitles" srclang="fr" src="vtt/subtitles-fr.vtt" />
+  <p>Watch <a href="https://youtube.com/link">video on Youtube</a>
+</video>`
+        }} />
+        <h1>Audio</h1>
+        <Sandpack template="static" files={{
+          'index.html': `<figure>
+<figcaption>Listen to the T-Rex:</figcaption>
+<audio
+    controls
+    src="https://interactive-examples.mdn.mozilla.net/media/cc0-audio/t-rex-roar.mp3">
+        <a href="/media/cc0-audio/t-rex-roar.mp3">
+            Download audio
+        </a>
+</audio>
+</figure>`
+        }} />
+      </Slide>
+      {/* 26 */}
+      <Slide className="p-10">
+        <h1>Document Object Model (DOM)</h1>
+        <div className="flex justify-center space-x-2">
+          <img src="https://web-dev.imgix.net/image/cGQxYFGJrUUaUZyWhyt9yo5gHhs1/xsvSa8YkwHyPWNnQ8Tpi.png?auto=format&w=964" width="800px" />
+          <img src="https://web-dev.imgix.net/image/cGQxYFGJrUUaUZyWhyt9yo5gHhs1/rX9myUwejCW2Ab0xUu0l.png?auto=format&w=964" width="500px" />
+        </div>
+      </Slide>
+      {/* 27 */}
+      <Slide className="p-10">
+        <h1>Accessibility Object Model (AOM)</h1>
+        <img src="https://web-dev.imgix.net/image/cGQxYFGJrUUaUZyWhyt9yo5gHhs1/KMEuk7ub4ejE7zdr5Vyk.png?auto=format&w=964" width="800px" />
+      </Slide>
+      <Slide>
+        <div className="flex items-center justify-center h-full">
+          <Link to="/">
+            <h1 className="hover:text-blue-600 underline">Back Home</h1>
+          </Link>
+        </div>
       </Slide>
     </Deck>
   );
 };
 
-export default IntroHtml;;
+export default IntroHtml;
